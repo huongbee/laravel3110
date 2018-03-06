@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // View::share([
+        //     'book'=>'De Men phien luu ki',
+        //     'author'=>'To Hoai'
+        // ]);
+
+        View::composer(['login','register'], function ($view) {
+            $view->with([
+                'book'=>'De Men phien luu ki',
+                'author'=>'To Hoai'
+            ]);
+        });
+
     }
 
     /**

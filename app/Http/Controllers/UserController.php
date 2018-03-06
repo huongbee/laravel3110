@@ -23,6 +23,14 @@ class UserController extends Controller
             'password'=>$password,
             'arr' => $arr
         ]);
+    }
 
+    function getRegisterForm(){
+        return view('register');
+    }
+
+    function getHomePage(){
+        //return view('pages/home');
+        return view('pages.home');
     }
 }

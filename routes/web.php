@@ -64,3 +64,14 @@ Route::get('login',[
     'uses'=>'UserController@getLoginForm',
     'as'=>'user_login'
 ]);
+
+
+Route::get('register',[
+    'uses'=>'UserController@getRegisterForm',
+    'as'=>'user_register'
+]);
+
+Route::get('home',[
+    'uses'=>'UserController@getHomePage'
+]);
+

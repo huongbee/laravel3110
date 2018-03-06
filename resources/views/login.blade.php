@@ -36,3 +36,6 @@
 @foreach($arr as $value)
 <h2 class="@if($value=='Android') red @else blue @endif">{{$value}}</h2>
 @endforeach
+
+<hr>
+<h3>{{$book}}</h3>
