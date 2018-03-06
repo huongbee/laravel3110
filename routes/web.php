@@ -60,13 +60,13 @@ Route::get('/', function () {
 
 // Route::resource('photo','PhotoController');
 
-Route::get('login',[
+Route::get('user/login',[
     'uses'=>'UserController@getLoginForm',
     'as'=>'user_login'
 ]);
 
 
-Route::get('register',[
+Route::get('user/register',[
     'uses'=>'UserController@getRegisterForm',
     'as'=>'user_register'
 ]);

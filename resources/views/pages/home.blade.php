@@ -8,5 +8,11 @@
 </head>
 <body>
     <h1>Hello Class</h1>
+    <p>
+        <a href="login">Login</a>
+    </p>
+    <p>
+        <a href="{{route('user_register')}}">Register</a>
+    </p>
 </body>
 </html>
