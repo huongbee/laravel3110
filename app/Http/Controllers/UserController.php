@@ -20,7 +20,8 @@ class UserController extends Controller
         //return view('login', compact('userName','password')); //c1
         return view('login', [
             'user_name'=>$userName,
-            'password'=>$password
+            'password'=>$password,
+            'arr' => $arr
         ]);
 
     }
