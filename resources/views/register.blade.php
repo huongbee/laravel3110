@@ -10,17 +10,29 @@
 </head>
 
 <body>
-    {{-- name email password password_confirm address phone --}} {{--$book--}}
+     {{--$book--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-6">
-                <h2>Register Form</h2>
+                <h2 class="text-center">Register Form</h2>
+
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $err)
+                        {{$err}}
+                    @endforeach
+                </div>
+                @endif
+
                 <form method="POST">
+                    {{csrf_field()}}
+                    {{--  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    @csrf  --}}
                     <div class="form-group">
                         <label for="name">Fullname</label>
                         <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter fullname" name="fullname">
-
                     </div>
+                    
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
@@ -40,6 +52,10 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Phone</label>
                         <input type="text" class="form-control" placeholder="Phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Age</label>
+                        <input type="text" class="form-control" placeholder="Age" name="age">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

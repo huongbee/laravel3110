@@ -71,6 +71,11 @@ Route::get('user/register',[
     'as'=>'user_register'
 ]);
 
+Route::post('user/register',[
+    'uses'=>'UserController@postRegister',
+    'as'=>'user_register'
+]);
+
 Route::get('home',[
     'uses'=>'UserController@getHomePage'
 ]);
