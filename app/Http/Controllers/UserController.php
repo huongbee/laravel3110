@@ -55,7 +55,7 @@ class UserController extends Controller
 
         /*
         name: bắt buộc, max:50
-        email: bắt buộc, max:50,unique: required|max:50|unique:users,email,admin@gmail.com
+        email: bắt buộc, type:email, max:50,unique: required|max:50|unique:users,email,admin@gmail.com
         password: bắt buộc, min:6 - max: 20
         password_confirm: bắt buộc, same password
         address: bắt buộc
@@ -64,12 +64,12 @@ class UserController extends Controller
         */
         $validator = $req->validate([
             'fullname'=>'required|max:50',
-            'email'=>'requied|max:50',
+            'email'=>'required|max:50|email',
             'password'=>'required|min:6|max:20',
-            'password_confirm'=>'required|same:password',
+            'confirm_password'=>'required|same:password',
             'address'=>'required',
             'phone'=>'required|numeric',
-            'age'=>'between:20,80'
+            'age'=>'between:20,80' //min:20,max:80
         ]);
 
         $data = $req->all();
