@@ -39,3 +39,9 @@
 
 <hr>
 <h3>{{$book}}</h3>
+
+
+@if(Session::has('message'))
+    <h2>{{Session::get('message')}}</h2>
+@endif
+<br><br><br><br><br><br>

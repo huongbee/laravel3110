@@ -23,6 +23,12 @@
                     @endforeach
                 </div>
                 @endif  --}}
+                @if(Session::has('message'))
+                <div class="alert alert-danger">
+                    {{Session::get('message')}}
+                </div>
+                @endif
+
 
                 <form method="POST">
                     {{csrf_field()}}
@@ -30,7 +36,7 @@
                     @csrf  --}}
                     <div class="form-group">
                         <label for="name">Fullname</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter fullname" name="fullname">
+                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter fullname" name="fullname" value="{{old('fullname')}}">
 
                         @if($errors->has('fullname'))
                         <div class="text-danger">
@@ -39,12 +45,12 @@
                             @endforeach
                         </div>
                         @endif
-
+                        
                     </div>
                     
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="{{old('email')}}">
                         @if($errors->has('email'))
                         <div class="text-danger">
                             @foreach($errors->get('email') as $err)

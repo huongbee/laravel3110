@@ -62,20 +62,44 @@ class UserController extends Controller
         phone: bắt buộc, number
         age: 20-80
         */
-        $validator = $req->validate([
+        $check = [
             'fullname'=>'required|max:50',
             'email'=>'required|max:50|email',
             'password'=>'required|min:6|max:20',
             'confirm_password'=>'required|same:password',
             'address'=>'required',
             'phone'=>'required|numeric',
-            'age'=>'between:20,80' //min:20,max:80
-        ]);
+            'age'=>'between:2,10' //min:20,max:80
+        ];
+        $mess = [
+            'fullname.required'=>'Vui lòng nhập họ tên',
+            'fullname.max'=>'Họ tên không quá :max kí tự',
+            'password.min'=>'Password ít nhất :min kí tự'
+        ];
+        $validator = $req->validate($check,$mess);
 
+        if($validator->fails()) {
+            return redirect('user_register')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        //custom error message
+        //giữ lại value của input nếu error
+        
+        
+        //ko co err, luu user
         $data = $req->all();
         echo "<pre>";
         print_r($data);
         echo '</pre>';
+
+        return redirect()->route('user_login')
+                        ->with('message','Successfully, Plz login');
+
+                        //->with(['message'=>'Successfully, Plz login',
+                        //         'level'=>'success'
+                        //       ])
 
 
     }
