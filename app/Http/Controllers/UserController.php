@@ -115,12 +115,15 @@ class UserController extends Controller
                 return;
             }
             $arrExt = ['png','jpg','gif'];
-            $ext = $file->getClientOriginalExtension();
+            $ext = $file->getClientOriginalExtension(); //png
             if(!in_array($ext,$arrExt)){
                 echo "Dot not choose this file type.";
                 return;
             }
-            
+            $baseName = $file->getClientOriginalName();
+            $newName = date('Y-m-d-H-i-m.').$baseName;
+            $file->move('images',$newName);
+            echo "Upload successfully";
         }
         else{
             echo "File not found!";
