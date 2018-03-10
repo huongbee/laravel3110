@@ -92,3 +92,24 @@ Route::post('upload-file',[
 
 Route::get('detail','UserController@getDetail');
 Route::get('type','UserController@getType');
+
+
+Route::get('create-table-demo',function(){
+    Schema::create('customers',function($table){
+        $table->increments('id');
+        $table->string('name',50);
+        $table->string('email',100)->unique();
+        $table->date('birthdate');
+        $table->boolean('status')->default(false);  
+        $table->timestamps(); //created_at & updated_at
+    });
+    echo "Created";
+});
+Route::get('modify-table-demo',function(){
+    Schema::table('customers',function($table){
+        $table->string('addess',200);
+    });
+    echo "Updated";
+});
+
+//update column, drop column....
