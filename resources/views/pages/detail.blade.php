@@ -4,3 +4,7 @@
     This is detail page!
 </h3>
 @endsection
+
+@section('title')
+    Detail Page
+@endsection
