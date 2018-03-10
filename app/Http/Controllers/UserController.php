@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class UserController extends Controller
 {
@@ -76,7 +77,7 @@ class UserController extends Controller
             'fullname.max'=>'Họ tên không quá :max kí tự',
             'password.min'=>'Password ít nhất :min kí tự'
         ];
-        $validator = $req->validate($check,$mess);
+        $validator = Validator::make($check,$mess);
 
         if($validator->fails()) {
             return redirect('user_register')
