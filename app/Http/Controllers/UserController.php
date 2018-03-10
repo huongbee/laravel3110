@@ -129,4 +129,12 @@ class UserController extends Controller
             echo "File not found!";
         }
     }
+
+
+    function getDetail(){
+        return view('pages/detail');
+    }
+    function getType(){
+        return view('pages/type');
+    }
 }
