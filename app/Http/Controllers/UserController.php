@@ -83,11 +83,6 @@ class UserController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
-
-        //custom error message
-        //giữ lại value của input nếu error
-        
-        
         //ko co err, luu user
         $data = $req->all();
         echo "<pre>";
@@ -102,5 +97,33 @@ class UserController extends Controller
                         //       ])
 
 
+    }
+
+    function getFormUpload(){
+        return view('upload_file');
+    }
+
+    function postUpload(Request $req){
+        //kiem tra file size //<=100kb
+        //file type ['png','jpg','gif']
+        //rename
+        if($req->hasFile('image')){
+            $file = $req->file('image');
+            
+            if($file->getSize() > 102400){
+                echo "File too large! Choose again!";
+                return;
+            }
+            $arrExt = ['png','jpg','gif'];
+            $ext = $file->getClientOriginalExtension();
+            if(!in_array($ext,$arrExt)){
+                echo "Dot not choose this file type.";
+                return;
+            }
+            
+        }
+        else{
+            echo "File not found!";
+        }
     }
 }

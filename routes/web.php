@@ -80,3 +80,11 @@ Route::get('home',[
     'uses'=>'UserController@getHomePage'
 ]);
 
+Route::get('upload-file',[
+    'uses'=>'UserController@getFormUpload',
+    'as'=>'upload_file'
+]);
+Route::post('upload-file',[
+    'uses'=>'UserController@postUpload',
+    'as'=>'upload_file'
+]);
