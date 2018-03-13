@@ -105,6 +105,7 @@ Route::get('create-table-demo',function(){
     });
     echo "Created";
 });
+
 Route::get('modify-table-demo',function(){
     Schema::table('customers',function($table){
         $table->string('addess',200);
@@ -112,4 +113,31 @@ Route::get('modify-table-demo',function(){
     echo "Updated";
 });
 
-//update column, drop column....
+//rename name->fullname
+//drop column address
+Route::get('modify-table-demo02',function(){
+    Schema::table('customers',function($table){
+        //$table->string('name',100)->change();
+        $table->renameColumn('name', 'fullname');
+        $table->dropColumn('addess');
+    });
+    echo "Updated";
+});
+
+//create table bills
+//tạo foreign key
+Route::get('create-table-bills',function(){
+    Schema::create('bills',function($t){
+        $t->increments('id');
+        $t->integer('customer_id')->unsigned();
+        $t->double('price',10,0);
+
+        $t->foreign('customer_id')
+          ->references('id')
+          ->on('customers');
+
+    });
+    echo "Created.";
+});
+
+//drop table
