@@ -135,9 +135,13 @@ Route::get('create-table-bills',function(){
         $t->foreign('customer_id')
           ->references('id')
           ->on('customers');
-
     });
     echo "Created.";
 });
 
 //drop table
+Route::get('drop-table',function(){
+    //Schema::drop('bills');
+    Schema::dropIfExists('bills');
+    echo "Deleted";
+});
