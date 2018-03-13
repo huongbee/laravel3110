@@ -145,3 +145,6 @@ Route::get('drop-table',function(){
     Schema::dropIfExists('bills');
     echo "Deleted";
 });
+
+Route::get('query-builder-index01','QueryBuilderController@index01');
+Route::get('query-builder-index02','QueryBuilderController@index02');
