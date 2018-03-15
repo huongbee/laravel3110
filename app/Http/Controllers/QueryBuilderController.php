@@ -59,4 +59,104 @@ class QueryBuilderController extends Controller
 
     }
     
+
+    function index03(){
+       /* $data = DB::table('foods')
+                ->select(
+                    'foods.*',
+                    'foods.name as tenmon',
+                    'food_type.name as tenloai'
+                )
+                ->join( 'food_type',
+                        'foods.id_type',
+                        '=',
+                        'food_type.id'
+                )
+                ->get();
+        */
+        /*
+        $data = DB::table('foods')
+                ->select(
+                    'quantity',
+                    'bill_detail.price',
+                    'foods.name as tenmon',
+                    'food_type.name as tenloai'
+                )
+                ->join( 'food_type',
+                        'foods.id_type',
+                        '=',
+                        'food_type.id'
+                )
+                ->join( 'bill_detail',
+                        'bill_detail.id_food',
+                        '=',
+                        'foods.id'
+                )
+                //->where('quantity',1)
+                ->where([
+                    [
+                        'bill_detail.price',
+                        '>',
+                        25000
+                    ],
+                    [
+                        'quantity',
+                        '<>',
+                        3
+                    ]
+                ])
+                ->get();
+        */
+        
+        // $data = DB::table('foods')
+        //         ->select(
+        //             'quantity',
+        //             'bill_detail.price',
+        //             'foods.name as tenmon',
+        //             'food_type.name as tenloai'
+        //         )
+        //         ->join('food_type',function($join){
+        //             $join->on(
+        //                 'foods.id_type',
+        //                 '=',
+        //                 'food_type.id'
+        //             );
+        //         })
+        //         ->join('bill_detail',function($join){
+        //             $join->on(
+        //                 'foods.id',
+        //                 '=',
+        //                 'bill_detail.id_food'
+        //             );
+        //             // $join->where([
+        //             //     ['quantity','<>',3],
+        //             //     ['bill_detail.price','>',25000]
+        //             // ]);
+        //         })
+        //         ->where([
+        //             ['quantity','<>',3],
+        //             ['bill_detail.price','>',25000]
+        //         ])
+        //         ->get();
+        // dd($data);
+
+        // DB::table('bill_detail')->insert([
+        //     'id_bill'=>3,
+        //     'id_food'=>2,
+        //     'quantity'=>3,
+        //     'price'=>30000
+        // ]);
+        // DB::table('bill_detail')
+        // ->where('id',16)
+        // ->update([
+        //     'id_bill'=>3,
+        //     'id_food'=>2,
+        //     'quantity'=>3,
+        //     'price'=>100000
+        // ]);
+        DB::table('bill_detail')
+        ->where('id',16)
+        ->delete();
+        echo "deleted!";
+    }
 }

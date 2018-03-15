@@ -148,3 +148,6 @@ Route::get('drop-table',function(){
 
 Route::get('query-builder-index01','QueryBuilderController@index01');
 Route::get('query-builder-index02','QueryBuilderController@index02');
+Route::get('query-builder-index03','QueryBuilderController@index03');
+
+Route::get('model-index01','ElequentModelController@index01');
