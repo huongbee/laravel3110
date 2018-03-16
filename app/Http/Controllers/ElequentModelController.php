@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Foods;
+use App\PageUrl;
 
 class ElequentModelController extends Controller
 {
@@ -28,9 +29,23 @@ class ElequentModelController extends Controller
         //                 ->offset(0) //vi tri lay 10 data
         //                 ->get();
         
-        $data = Foods::selectRaw('avg(price) as dgtb')
-                        ->first();
-        echo "DON GIA: ".ceil($data->dgtb);
+        // $data = Foods::selectRaw('avg(price) as dgtb')
+        //                 ->first();
+        // echo "DON GIA: ".ceil($data->dgtb);
+
+
+        $data = PageUrl::with('foods')
+            ->where([
+                ['id','<',8]
+            ])->get();
+
+        foreach($data as $d){
+            echo $d->url;
+            echo '-----------';
+            echo $d->foods->name;
+            echo "<hr>";
+        }
+
         dd($data);
     }
 }
