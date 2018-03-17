@@ -77,10 +77,11 @@ class UserController extends Controller
             'fullname.max'=>'Họ tên không quá :max kí tự',
             'password.min'=>'Password ít nhất :min kí tự'
         ];
-        $validator = Validator::make($check,$mess);
+        $validator = Validator::make($req->all(),$check,$mess);
 
         if($validator->fails()) {
-            return redirect('user_register')
+            return redirect()
+                        ->route('user_register')
                         ->withErrors($validator)
                         ->withInput();
         }
