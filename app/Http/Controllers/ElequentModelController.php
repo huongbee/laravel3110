@@ -57,17 +57,70 @@ class ElequentModelController extends Controller
         //     echo "<hr>";
         // }
 
-        $data = \App\FoodType::with('foods')->get();
+        // $data = \App\FoodType::with('foods')->get();
+
+        // foreach($data as $type){
+        //     echo "<h3>".$type->id. '. '.$type->name. ': </h3>';
+        //     echo "<br>";
+        //     foreach($type->foods as $food){
+        //         echo '- '.$food->name;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+
+        // $data = \App\Customers::with('bills')->get();
+
+        // foreach($data as $customer){
+        //     echo "<h3>".$customer->id. '. '.$customer->name. ': </h3>';
+        //     echo "<br>";
+        //     foreach($customer->bills as $bill){
+        //         echo '- '.$bill->total;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        // $data = \App\Foods::with('menu')->get();
+
+        // foreach($data as $food){
+        //     echo "<h3>".$food->id. '. '.$food->name. ': </h3>';
+        //     echo "<br>";
+        //     foreach($food->menu as $menu){
+        //         echo '- '.$menu->name;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+
+        // $data = \App\Menu::with('foods')->get();
+
+        // foreach($data as $menu){
+        //     echo "<h3>".$menu->id. '. '.$menu->name. ': </h3>';
+        //     echo "<br>";
+        //     foreach($menu->foods as $food){
+        //         echo '- '.$food->name;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        $data = \App\FoodType::with('menuDetail')->get();
 
         foreach($data as $type){
             echo "<h3>".$type->id. '. '.$type->name. ': </h3>';
             echo "<br>";
-            foreach($type->foods as $food){
-                echo '- '.$food->name;
+            foreach($type->menuDetail as $detail){
+                echo '- '.$detail->id;
                 echo "<br>";
             }
             echo "<hr>";
         }
+
+        
+
         //dd($data);
     }
 }
