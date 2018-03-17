@@ -59,6 +59,15 @@ class ElequentModelController extends Controller
 
         $data = \App\FoodType::with('foods')->get();
 
-        dd($data);
+        foreach($data as $type){
+            echo "<h3>".$type->id. '. '.$type->name. ': </h3>';
+            echo "<br>";
+            foreach($type->foods as $food){
+                echo '- '.$food->name;
+                echo "<br>";
+            }
+            echo "<hr>";
+        }
+        //dd($data);
     }
 }
