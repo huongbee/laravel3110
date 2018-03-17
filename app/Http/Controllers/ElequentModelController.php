@@ -33,18 +33,31 @@ class ElequentModelController extends Controller
         //                 ->first();
         // echo "DON GIA: ".ceil($data->dgtb);
 
+        
+        // $data = PageUrl::with('foods')
+        //     ->where([
+        //         ['id','<',8]
+        //     ])->get();
 
-        $data = PageUrl::with('foods')
-            ->where([
-                ['id','<',8]
-            ])->get();
+        // foreach($data as $d){
+        //     echo $d->url;
+        //     echo '-----------';
+        //     echo $d->foods->name;
+        //     echo "<hr>";
+        // }
 
-        foreach($data as $d){
-            echo $d->url;
-            echo '-----------';
-            echo $d->foods->name;
-            echo "<hr>";
-        }
+        // $data = Foods::with('pageUrl')
+        //             ->where([
+        //                 ['id','<',8]
+        //             ])->get();
+        // foreach($data as $d){
+        //     echo $d->name;
+        //     echo '-----------';
+        //     echo $d->pageUrl->url;
+        //     echo "<hr>";
+        // }
+
+        $data = \App\FoodType::with('foods')->get();
 
         dd($data);
     }

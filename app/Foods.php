@@ -8,7 +8,9 @@ class Foods extends Model
 {
     public $table = 'foods';
 
-    
+    function pageUrl(){
+        return $this->belongsTo('App\PageUrl','id_url','id');
+    }
     
 }
 
